@@ -14,10 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
                             </svg>`;
     const menuBurgerBtn = document.querySelector('.header__burger');
     const menu = document.querySelector('.header__list');
+    const menuLinks = document.querySelectorAll('.header__list-item');
+
+    menuLinks.forEach(item => {
+        item.addEventListener('click', () => {
+
+        if (menuBurgerBtn.classList.contains('active')) {
+            menuBurgerBtn.classList.toggle('active');
+            menu.classList.toggle('show-menu');
+            document.body.style.overflow = 'auto';
+        }
+        })
+    });
 
     menuBurgerBtn.addEventListener('click', () => {
         menuBurgerBtn.classList.toggle('active');
         menu.classList.toggle('show-menu');
+        if (menuBurgerBtn.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
     });
 
     modeBtn.innerHTML = darkModeIcon;
